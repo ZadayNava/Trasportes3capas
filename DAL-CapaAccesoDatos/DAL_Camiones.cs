@@ -8,7 +8,7 @@ using VO;
 
 namespace DAL_CapaAccesoDatos
 {
-    internal class DAL_Camiones
+    public class DAL_Camiones
     {
         //Create
 
@@ -32,9 +32,9 @@ namespace DAL_CapaAccesoDatos
             {
                 throw;
             }
-            //Update
-
-            //Delete
         }
+        //Update
+
+        //Delete
     }
 }
