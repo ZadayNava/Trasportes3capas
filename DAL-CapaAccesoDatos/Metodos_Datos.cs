@@ -160,7 +160,6 @@ namespace DAL_CapaAccesoDatos
          * retorna un valor entero que representa el numero de filas afectadas por la operacion
          * (por ejemplo, el numoer de filas insertadas, actualizadas o eliminadas)
          */
-
         public static int execute_nonQuery(string sp, params object[] parametros)
         {
             //intancia un entero
