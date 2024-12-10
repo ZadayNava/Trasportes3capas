@@ -20,8 +20,8 @@ namespace DAL_CapaAccesoDatos
             user = ;
             password = ;*/
                                                         //este es el nombre de tu conexio de la BD
-        static string _cadenaConexion = @"Data Source = SADAY\SQLEXPRESS
-                                          Initial Catalog = Transportes
+        static string _cadenaConexion = @"Data Source = SADAY\SQLEXPRESS;
+                                          Initial Catalog = Transportes;
                                           Integrated Security = true;";
         
         //Encapsulamietos

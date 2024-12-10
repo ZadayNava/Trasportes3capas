@@ -14,6 +14,7 @@ namespace VO
          VO = view string
          Represetation de una tabla a nivel de codigo c#
         */
+
         private int _Id_camion;
         private string _matricula;
         private string _tipo_camion;
@@ -49,6 +50,7 @@ namespace VO
             _Disponibilidad = true;
 
         }
+
         //Parametros
         //DataRow => Objeto ADO
         public Camiones_VO(DataRow dr)
@@ -59,7 +61,7 @@ namespace VO
             _marca = dr["marca"].ToString();
             _modelo = dr["modelo"].ToString();
             _capacidad = int.Parse(dr["capacidad"].ToString()); 
-            _kilometraje = int.Parse(dr["kilometraje"].ToString());
+            _kilometraje = float.Parse(dr["kilometraje"].ToString());
             _urlFoto = dr["urlFoto"].ToString();
             _Disponibilidad = bool.Parse(dr["Disponibilidad"].ToString());
 

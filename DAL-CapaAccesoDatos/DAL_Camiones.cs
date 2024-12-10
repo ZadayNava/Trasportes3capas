@@ -20,7 +20,7 @@ namespace DAL_CapaAccesoDatos
             try
             {
                 //creo un dataSet el cual recibira lo que devuelva la ejecucion del metodo "execute_DataSet" de la clase "metodos_datos"
-                DataSet ds_camiones = Metodos_Datos.execute_DataSet("Sp_Listar_camiones", parametros);
+                DataSet ds_camiones = Metodos_Datos.execute_DataSet("SP_ListarCamiones", parametros);
                 //recorro cada renglon existente de nuestro ds creando obetos del tipo VO y añadiendolos a la lista
                 foreach (DataRow dr in ds_camiones.Tables[0].Rows)
                 {
