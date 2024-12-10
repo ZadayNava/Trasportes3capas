@@ -45,7 +45,6 @@ namespace DAL_CapaAccesoDatos
             }
             return salida;
         }
-
         //Read
         public static List<Camiones_VO> GetCamiones(params object[] parametros)
         {
@@ -81,7 +80,7 @@ namespace DAL_CapaAccesoDatos
 
                 if (respuesta != 0)
                 {
-                    salida = "Camion registrado con exito";
+                    salida = "Camion actualizado con exito";
                 }
                 else
                 {
@@ -95,8 +94,6 @@ namespace DAL_CapaAccesoDatos
             }
             return salida;
         }
-
-
         //Delete
         public static string Delete_Camion(Camiones_VO camiones)
         {
@@ -109,7 +106,7 @@ namespace DAL_CapaAccesoDatos
                     );
                 if (respuesta != 0)
                 {
-                    salida = "Camion registrado con exito";
+                    salida = "Camion elimiado con exito";
                 }
                 else
                 {
