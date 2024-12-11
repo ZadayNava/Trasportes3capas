@@ -66,6 +66,28 @@ namespace DAL_CapaAccesoDatos
                 throw;
             }
         }
+
+        //Read
+        public static Camiones_VO GetCamionesxID(int id)
+        {
+            //creo una lista de objetos vo
+            Camiones_VO list = new Camiones_VO();
+            try
+            {
+                //creo un dataSet el cual recibira lo que devuelva la ejecucion del metodo "execute_DataSet" de la clase "metodos_datos"
+                DataSet ds_camiones = Metodos_Datos.execute_DataSet("SP_ListarCamiones", "@Id_camion", id);
+                //recorro cada renglon existente de nuestro ds creando obetos del tipo VO y añadiendolos a la lista
+                foreach (DataRow dr in ds_camiones.Tables[0].Rows)
+                {
+                    list = new Camiones_VO(dr);
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
         //Update
         public static string Update_Camiones(Camiones_VO camiones)
         {
@@ -74,8 +96,14 @@ namespace DAL_CapaAccesoDatos
             try
             {
                 respuesta = Metodos_Datos.execute_nonQuery("SP_UpdateCamion",
+                    "@matricula", camiones.Matricula,
+                    "@tipo_camion", camiones.Tipo_camion,
                     "@marca", camiones.Marca,
-                    "@Id_camion", camiones.Id_camion
+                    "@modelo", camiones.Modelo,
+                    "@capacidad", camiones.Capacidad,
+                    "@kilometraje", camiones.Kilometraje,
+                    "@urlFoto", camiones.UrlFoto,
+                    "@Disponibilidad", camiones.Disponibilidad
                     );
 
                 if (respuesta != 0)
@@ -95,14 +123,14 @@ namespace DAL_CapaAccesoDatos
             return salida;
         }
         //Delete
-        public static string Delete_Camion(Camiones_VO camiones)
+        public static string Delete_Camion(int id)
         {
             string salida = "";
             int respuesta = 0;
             try
             {
                 respuesta = Metodos_Datos.execute_nonQuery("SP_DelateCamion",
-                    "@Id_camion", camiones.Id_camion
+                    "@Id_camion", id
                     );
                 if (respuesta != 0)
                 {

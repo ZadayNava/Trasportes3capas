@@ -13,22 +13,29 @@ namespace BLL
         //Create
         public static string Insert_Camion(Camiones_VO camiones)
         {
-            return Insert_Camion(camiones);
+            return DAL_Camiones.Insert_Camion(camiones);
         }
+
         //Read
         public static List<Camiones_VO> GetCamiones(params object[] parametros)
         {
             return DAL_Camiones.GetCamiones(parametros);
         }
+
+        //ReadxID
+        public static Camiones_VO GetCamionesxID(int id)
+        {
+            return DAL_Camiones.GetCamionesxID(id);
+        }
         //Update
         public static string Update_Camiones(Camiones_VO camiones)
         {
-            return Update_Camiones(camiones);
+            return DAL_Camiones.Update_Camiones(camiones);
         }
         //Delete
-        public static string Delete_Camion(Camiones_VO camiones)
+        public static string Delete_Camion(int id)
         {
-            return Delete_Camion(camiones);
+            return DAL_Camiones.Delete_Camion(id);
         }
     }
 }
