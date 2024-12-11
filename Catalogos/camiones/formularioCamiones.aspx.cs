@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Trasportes3capas.Utilidades;
 using VO;
 
 namespace Trasportes3capas.Catalogos.camiones
@@ -84,9 +85,9 @@ namespace Trasportes3capas.Catalogos.camiones
                         Directory.CreateDirectory(pathdir);
                     }
                     //subo la imagen a la carpeta del servidor
-                    subeimagen.PostedFile.SaveAs(pathdir+filename);
+                    subeimagen.PostedFile.SaveAs(pathdir + filename);
                     //recuperamos la ruta de la url que almacearemos en la bd
-                    string urlfoto = "/Imagenes/Camiones/"+filename;
+                    string urlfoto = "/Imagenes/Camiones/" + filename;
                     //mostramos en pantalla la URL creada
                     this.urlfoto.Text = urlfoto;
                     //mostramos la imagen
@@ -118,14 +119,15 @@ namespace Trasportes3capas.Catalogos.camiones
                 //forma 2 (durante la propia instancia)
                 //Camiones_VO _camion_aux_2 = new Camiones_VO();
                 //{
-                //        Matricula = txtMatricula.Text,
-                //        Marca = txtMarca.Text,
-                //        Tipo_Camion = txtTipo.Text,
-                //        Modelo = txtModelo.Text,
-                //        Capaciad = Convert.ToInt32(txtCapacidad.Text),
-                //        kilometraje = Convert.ToDouble (txtKilometraje.Text),
-                //        UrlFoto = imgcamion.ImageUrl
+                //    _camion_aux_2.Matricula = txtMatricula.Text;
+                //    _camion_aux_2.Marca = txtMarca.Text;
+                //    _camion_aux_2.Tipo_Camion = txtTipo.Text;
+                //    _camion_aux_2.Modelo = txtModelo.Text,
+                //        _camion_aux_2.Capaciad = Convert.ToInt32(txtCapacidad.Text);
+                //    _camion_aux_2.kilometraje = Convert.ToDouble(txtKilometraje.Text);
+                //    _camion_aux_2.UrlFoto = imgcamion.ImageUrl;
                 //};
+
                 //decido si voy a insertar o actualizar
                 if (Request.QueryString["Id"] == null)
                 {
@@ -140,7 +142,19 @@ namespace Trasportes3capas.Catalogos.camiones
                     salida = BLL_Camiones.Update_Camiones(_camion_aux);
                 }
                 //preparamos la salida para cachar un error y mostra el sweet alert
-                if (salida.ToUpper().Contains("ERROR")) { } else { }
+                if (salida.ToUpper().Contains("ERROR"))
+                {
+                    titulo = "Opps ...";
+                    respuesta = salida;
+                    tipo = "warning";
+                }
+                else
+                {
+                    titulo = "Correcto!";
+                    respuesta = salida;
+                    tipo = "success";
+
+                }
             }
             catch (Exception ex)
             {
@@ -148,6 +162,8 @@ namespace Trasportes3capas.Catalogos.camiones
                 respuesta = ex.Message;
                 tipo = "error";
             }
+            //sweet alert
+            SweetAlert.Sweet_Alert(titulo, respuesta, tipo, this.Page, this.GetType(), "/Catalogos/camiones/ListadoCamiones.aspx");
         }
     }
 }

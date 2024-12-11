@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Trasportes3capas.Utilidades;
 
 namespace Trasportes3capas.Catalogos.camiones
 {
@@ -50,6 +51,10 @@ namespace Trasportes3capas.Catalogos.camiones
                 tipo = "success";
 
             }
+            //debemos importar el usign de "using <nombre_de_tu_proyecto>.Utilidades;"
+            SweetAlert.Sweet_Alert(titulo, msg, tipo, this.Page, this.GetType());
+            //Recargamos la pagina
+            cargarGrid();
         }
 
         protected void GVCamiones_RowCommand(object sender, GridViewCommandEventArgs e)
